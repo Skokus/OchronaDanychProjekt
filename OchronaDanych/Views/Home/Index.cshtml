@@ -1,0 +1,44 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using OchronaDanych.Areas.Identity.Data
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model IEnumerable<OchronaDanych.Areas.Identity.Data.DomainPassword>
+    
+    <div class="text-center">
+        <a asp-area="" asp-controller="Home" asp-action="Create"><button type="submit" class="btn btn-primary">Add Password</button></a><br/><br/>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Domain)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Password)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Domain)
+                        </td>
+                        <td>
+                        @Html.Raw("********")
+                        </td>
+                        <td>
+                            @Html.ActionLink("Open", "Open", new { id=item.ID })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
