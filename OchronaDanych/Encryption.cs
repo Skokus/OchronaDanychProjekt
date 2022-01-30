@@ -13,7 +13,7 @@ namespace OchronaDanych
     {
         public static byte[] getKeyFromString(string password, byte[] salt)
         {
-            return KeyDerivation.Pbkdf2(password, salt, KeyDerivationPrf.HMACSHA256, 10, 32);
+            return KeyDerivation.Pbkdf2(password, salt, KeyDerivationPrf.HMACSHA256, 15321, 32);
         }
 
         public static byte[] GetSalt(int maximumSaltLength)
